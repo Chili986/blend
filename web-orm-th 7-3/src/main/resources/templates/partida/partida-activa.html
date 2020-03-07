@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login - Juegos Online</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="CSS/styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=ZCOOL+QingKe+HuangYou&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <header>
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="#"> <img src="/img/logo.png" alt="logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        MENU <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="inicio">INICIO<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                            <a class="nav-link" href="user">MI USUARIO</a>
+                        </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">PARTIDA</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="puntos">MIS PUNTOS</a>
+                                           </li>
+
+                    </ul>
+                </div>
+        </nav>
+    </header>
+    <div>
+        <h1 class="popup-title">¡A JUGAR!</h1>
+    </div>
+    <main class="row">
+      <div class="container">
+
+        <img id="foto" src="/img/Usuario.png" class="rounded-circle" alt="Avatar usuario">
+        
+        <div class="jumbotron text-center">
+            
+            <span class="navbar-brand navbar-right" th:text="${pregunta.categorias}"></span> 
+             <table class="table table-bordered">
+                <tbody>
+	                <tr th:each="pregunta : ${pregunta}">
+	                    <td th:text="${pregunta.preguntas}"></td>
+	                 </tr>
+                </tbody>
+            </table>
+          </div>
+
+          <div class="jumbotron text-center">
+            <h3>Seleccionar una respuesta</h3>
+            <ul th:each="respuesta : ${respuesta}">
+            <button type="button" class="btn btn-success" th:text="${respuesta.respuesta_correcta}"></button>
+            <button type="button" class="btn btn-success" th:text="${respuesta.respuesta_incorrecta_1}"></button>
+            <button type="button" class="btn btn-success" th:text="${respuesta.respuesta_incorrecta_2}"></button>
+            <button type="button" class="btn btn-success" th:text="${respuesta.respuesta_incorrecta_3}"></button>
+            </ul>
+          </div>
+          
+       <div class="jumbotron text-center">
+            <h3>Seleccionar una respuesta (random)</h3>
+            <ul>
+                <form action="/analizar" method="POST">
+                    <button type="submit" class="btn btn-success" th:text="${resp1}" value="${resp1}"></button></form><br>
+                <form action="/analizar" method="POST">
+                <button type="submit" class="btn btn-success" th:text="${resp2}" value="${resp2}"></button></form><br>
+                    <form action="/analizar" method="POST">            
+                <button type="submit" class="btn btn-success" th:text="${resp3}" value="${resp3}"></button></form><br>
+                    <form action="/analizar" method="POST">
+                <button type="submit" class="btn btn-success" th:text="${resp4}" value="${resp4}"></button></form><br>
+            </ul>
+          </div>
+          <!--<tbody>
+	                <tr th:each="pregunta : ${respuestas}">
+	                    <td th:text="${pregunta.next}"></td>
+	                   
+	                 </tr>
+                </tbody>-->
+       
+      </div>
+    </main>
+    <footer class="pie">
+        <img src="/img/footer.png" alt="imagen footer">
+    </footer>
+    <script src="/js/LoginJS.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
